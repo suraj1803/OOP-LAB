@@ -27,8 +27,9 @@ public:
 };
 
 int main() {
-    Student s1;
+    Student s1, s2;
     s1.getData();
-    s1.putData();
+    s1.putData(); 
+
     return 0;
 }
