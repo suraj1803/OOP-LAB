@@ -26,6 +26,8 @@ int main() {
     b.get_number(2);
     c.get_number(3);
     a.displayCount();
+    b.displayCount();
+    c.displayCount();
 
     return 0;
 }
