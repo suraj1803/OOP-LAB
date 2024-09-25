@@ -16,7 +16,8 @@ class Complex {
         }
 
         void Display() {
-            cout << "Complex number : " << x << " + "<< y << "i" << endl;
+            cout << x << " + "<< y << "i";
+            cout << "\n";
         }
 
         friend Complex sum(Complex a, Complex b);
@@ -33,9 +34,12 @@ Complex sum(Complex a, Complex b) {
 int main() {
 
     Complex a, b, c;
+    cout << "Enter first complex number" << endl;
     a.getData();
+    cout << "Enter second complex number" << endl;
     b.getData();
     c = sum(a, b);
+    cout << "Sum of the two complex number is : ";
     c.Display();
 
     return 0;
