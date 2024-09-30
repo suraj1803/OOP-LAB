@@ -4,13 +4,19 @@ using namespace std;
 
 class String{
 private:
-    char str[1000];
+    char *str;
 public:
+    String() {
+        str = new char[1];
+        str[0] = '\0';
+    }
     String(const char *s1) {
+        str = new char[strlen(s1) + 1];
         strcpy(str, s1);
     }
 
     String(String &s) {
+        str = new char[strlen(s.str) + 1];
         strcpy(str, s.str);
     }
 
@@ -23,6 +29,10 @@ public:
     }
 
     friend String concat(const String &s1, const String &s2);
+
+    ~String() {
+        delete[] str;
+    }
 };
 
 String concat(const String &s1, const String &s2) {
@@ -39,6 +49,7 @@ int main() {
     String str3 = concat(str1, str2);
     str3.display();
     cout << str3.size() << endl;
+    String str4;
 
     return 0;
 }
