@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <string.h>
 #include <vector>
 using namespace std;
@@ -73,6 +72,7 @@ class BookInventory
 {
 private:
     vector<book *> books;
+    static int transactions;
 
 public:
     BookInventory()
@@ -112,6 +112,7 @@ public:
                 int total = total_price(b, required_copies);
                 cout <<"Total price: " << total << endl;
                 b->set_stock(b->get_stock() - required_copies);
+                transactions++;
             }
             else {
                 cout << "The required copies not in stock\n";
@@ -169,6 +170,10 @@ public:
         }
     }
 
+    static int get_transactions() {
+        return transactions;
+    }
+
     ~BookInventory()
     {
         for (auto book : books)
@@ -178,10 +183,13 @@ public:
     }
 };
 
+int BookInventory::transactions = 0;
+
 int main()
 {
     BookInventory inventory;
     inventory.search();
+    cout << inventory.get_transactions() << endl;
 
     return 0;
 }
