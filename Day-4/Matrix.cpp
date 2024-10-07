@@ -8,9 +8,7 @@ private:
 public:
 
     // Search about shallow and deep copy
-    
-    Matrix() {
-    }
+    Matrix() {}
 
     Matrix(int m, int n){
         this->m = m;
