@@ -62,6 +62,10 @@ public:
         Matrix *res = new Matrix(m, n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+                res->arr[i][j] = 0;
+                for (int k = 0; k < this->n; k++) {
+                    res->arr[i][j] += this->arr[i][k] * mat.arr[k][j];
+                }
             }
         }
 
@@ -94,7 +98,7 @@ int main() {
     Matrix m1, m2;
     m1.set_elements();
     m2.set_elements();
-    Matrix *m3 = m1 + m2;
+    Matrix *m3 = m1 * m2;
     cout << *m3;
 
     delete m3;
