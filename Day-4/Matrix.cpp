@@ -6,13 +6,17 @@ private:
     int m, n;
     int **arr;
 public:
-
-    // Search about shallow and deep copy
     Matrix() {}
 
     Matrix(int m, int n){
         this->m = m;
         this->n = n;
+        create_matrix(m, n);
+    }
+
+    Matrix(const Matrix& arr) {
+        this->m = arr.m;
+        this->n = arr.n;
         create_matrix(m, n);
     }
 
@@ -40,29 +44,29 @@ public:
         }
     }
     
-    Matrix* operator+(const Matrix &mat) {
+    Matrix operator+(const Matrix &mat) {
         int m = this->m;
         int n = this->n;
 
-        Matrix *res = new Matrix(m, n);
+        Matrix res(m, n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                res->arr[i][j] = this->arr[i][j] + mat.arr[i][j];
+                res.arr[i][j] = this->arr[i][j] + mat.arr[i][j];
             }
         }
         return res;
     }
 
-    Matrix* operator*(const Matrix &mat) {
+    Matrix operator*(const Matrix &mat) {
         int m = this->m;
         int n = mat.n;
 
-        Matrix *res = new Matrix(m, n);
+        Matrix res (m, n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                res->arr[i][j] = 0;
+                res.arr[i][j] = 0;
                 for (int k = 0; k < this->n; k++) {
-                    res->arr[i][j] += this->arr[i][k] * mat.arr[k][j];
+                    res.arr[i][j] += this->arr[i][k] * mat.arr[k][j];
                 }
             }
         }
@@ -96,10 +100,9 @@ int main() {
     Matrix m1, m2;
     m1.set_elements();
     m2.set_elements();
-    Matrix *m3 = m1 * m2;
-    cout << *m3;
+    Matrix m3 = m1 * m2;
+    cout << m3;
 
-    delete m3;
 
     return 0;
 }
