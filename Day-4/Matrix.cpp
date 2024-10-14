@@ -14,10 +14,25 @@ public:
         create_matrix(m, n);
     }
 
+    /*
+
+    ---- Important -- 
+    copy constructor to perform deep copy not shallow copy
+    otherwise it will copies only the pointer not the actuall 2d array that
+    is in the heap memory
+
+    */
     Matrix(const Matrix& arr) {
         this->m = arr.m;
         this->n = arr.n;
         create_matrix(m, n);
+    }
+
+    void create_matrix(int m, int n) {
+        arr = new int*[m];
+        for (int i = 0; i < m; i++) {
+            arr[i] = new int[n];
+        }
     }
 
     void set_elements() {
@@ -37,12 +52,6 @@ public:
         }
     }
 
-    void create_matrix(int m, int n) {
-        arr = new int*[m];
-        for (int i = 0; i < m; i++) {
-            arr[i] = new int[n];
-        }
-    }
     
     Matrix operator+(const Matrix &mat) {
         int m = this->m;
@@ -56,6 +65,7 @@ public:
         }
         return res;
     }
+
 
     Matrix operator*(const Matrix &mat) {
         int m = this->m;
@@ -74,9 +84,11 @@ public:
         return res;
     }
 
+    Matrix inverse() {
+
+    }
 
     friend ostream& operator<<(ostream& output , Matrix &m);
-
 
     ~Matrix() {
         for (int i = 0; i < m; i++) {
@@ -101,7 +113,7 @@ int main() {
     m1.set_elements();
     m2.set_elements();
     Matrix m3 = m1 * m2;
-    cout << m3;
+    cout << m3 << m1 << m2;
 
 
     return 0;
