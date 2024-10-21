@@ -1,0 +1,10 @@
+1. Hybrid inheritance
+    Student -> marks -> result
+    sports -> result
+    
+2 . Modified Hybrid Inheritance
+    Student -> marks -> result
+    sports -> result
+    Student > sports
+
+3. Hierarchical inheritance 
