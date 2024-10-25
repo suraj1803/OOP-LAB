@@ -71,6 +71,7 @@ Time operator+(const Time &t1, const Time &t2) {
     return t3;
 }
 
+
 int main() {
     Time t1, t2, t3;
     t1.set_time();
